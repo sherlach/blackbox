@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MiniPuzz Prototype</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<h1>THE BLACK BOX PUZZLE</h1>
+
+<input type="text" id="userInput"> <!--Text input of product id from user-->
+
+<button id="btn">Enter</button> <!--Button to invoke API request-->
+
+<div id="response">
+    <pre></pre>
+</div>
+
+<script>
+//Attach an event listener to the button. 
+document.getElementById("btn").addEventListener("click", function(){
+
+    //Get the id of product the user entered
+    let input = document.getElementById("userInput").value;
+		console.log(input);
+	console.log(JSON.stringify(input));
+
+      fetch('http://208.87.135.107:3069', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"input": input}) 
+      })
+	.then(res => res.json())
+	.then((data) => {
+    document.getElementById("response").innerHTML = data;
+	console.log(data) });
+
+
+});
+</script>
+
+</body>
+</html>

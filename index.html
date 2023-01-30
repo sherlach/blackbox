@@ -18,9 +18,10 @@
 
 <script>
 //Attach an event listener to the button. 
-document.getElementById("btn").addEventListener("click", function(){
 
-    //Get the id of product the user entered
+function enterInput(evt){
+    evt.preventDefault()
+
     let input = document.getElementById("userInput").value;
 		console.log(input);
 	console.log(JSON.stringify(input));
@@ -36,9 +37,11 @@ document.getElementById("btn").addEventListener("click", function(){
 	.then((data) => {
     document.getElementById("response").innerHTML = data;
 	console.log(data) });
+}
 
+document.getElementById("btn").addEventListener("click", enterInput)
+document.getElementById("btn").addEventListener("touchstart", enterInput)
 
-});
 </script>
 
 </body>

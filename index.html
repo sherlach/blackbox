@@ -31,7 +31,8 @@ function enterInput(evt){
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({"input": input}) 
+      body: JSON.stringify({"input": input}),
+      credentials: 'include'
       })
 	.then(res => res.json())
 	.then((data) => {
